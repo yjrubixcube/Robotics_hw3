@@ -36,6 +36,7 @@ for i in range(1,5):
 
     x_lab=""
 
+    object_cnt=1
     for cnt in contours:
         area = cv2.contourArea(cnt)
         # perimeter = cv2.arcLength(cnt, True)
@@ -54,7 +55,8 @@ for i in range(1,5):
         point2 = int(cx - LINE_LENGTH*cos(angle)), int(cy - LINE_LENGTH*sin(angle))
         cv2.line(img, point1, point2, (0, 255, 0), 3)
         cv2.line(bin_img, point1, point2, (0, 255, 0), 3)
-        x_lab+=f"Centroid = ({cx},{cy})\nPrinciple angle= {angle*180/pi} degree\n"
+        x_lab+=f"Centroid {object_cnt} = ({cx},{cy})\nPrinciple angle {object_cnt}= {(angle*180/pi):.6f} degree\n"
+        object_cnt+=1
 
     plt.xlabel(x_lab)
     plt.imshow(img)
