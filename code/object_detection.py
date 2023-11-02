@@ -61,7 +61,6 @@ for i in range(1,5):
     plt.xlabel(x_lab)
     plt.imshow(img)
     plt.savefig(f"{img_path}/result_{i}.png",dpi=200,bbox_inches="tight")
-    plt.show()
     plt.clf()
     #cv2.imshow("og", img)
 # cv2.imshow("ell", blank)
