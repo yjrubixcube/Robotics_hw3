@@ -18,7 +18,8 @@ imgpoints = [] # 2d points in image plane.
 images = []
 
 for i in range(1, 21):
-    img = cv2.imread(f"images/img{i}.jpg", cv2.IMREAD_GRAYSCALE)
+    img = cv2.imread(f"images/img{i}.jpg")
+    # img = cv2.imread(f"images/img{i}.jpg", cv2.IMREAD_GRAYSCALE)
     # img = cv2.imread(f"../AssignmentIII/AssignmentIII/PartA/images/img{i}.jpg", cv2.IMREAD_GRAYSCALE)
     # img = cv2.resize(img, (img.shape[1]//4, img.shape[0]//4))
     images.append(img)
@@ -36,7 +37,7 @@ for img in images:
     # print(img.shape)
     # cv2.imshow("corners", img)
     # cv2.waitKey(0)
-
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     # cv2.destroyAllWindows()
     ret, corners = cv2.findChessboardCorners(img, CORNER_COUNT, None)
     # print(ret)
@@ -66,7 +67,7 @@ newcameramtx, roi=cv2.getOptimalNewCameraMatrix(mtx,dist,img.shape[::-1],1,img.s
 # p: tangential distortion values
 # rvecs: rotation vector
 # tvecs: tranlation vector
-img2 = cv2.imread(f"images/img21.jpg", cv2.IMREAD_GRAYSCALE)
+img2 = cv2.imread(f"images/img21.jpg")
 # img2 = cv2.resize(img2, (img2.shape[1]//4, img2.shape[0]//4))
 # img2 = cv2.resize(img2, img2.shape)
 dst = cv2.undistort(img2, mtx, dist, None, newcameramtx)
